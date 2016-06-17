@@ -1,7 +1,6 @@
 var _ = require("lodash");
 var pathToRegexp = require('path-to-regexp');
 
-
 var data = {
     "/abc": {
         good: ["/abc"],
@@ -46,6 +45,22 @@ var data = {
     "/:foo+": {
         good: ["/aaa", "/aaa/bbb", "/aaa/bbb/ccc"],
         bad: ["/"]
+    },
+    "/ab?cd": {
+        good: ["/ab?cd"],
+        bad: ["/abcd", "/acd", "/abbcd", "a"]
+    },
+    "/ab+cd": {
+        good: ["/ab+cd"],
+        bad: ["/abcd", "/abbcd", "/abbbcd", "/acd"]
+    },
+    "/ab*cd": {
+        good: ["/abcd", "/abbcd", "/abxxxxcd"],
+        bad: ["/a", "/abx"]
+    },
+    "/ab(cd)?e": {
+        good: ["/abcde", "/abe"],
+        bad: ["/abce", "/abde"]
     },
     "/:foo(\\d+)": {
         good: ["/1", "/123"],
