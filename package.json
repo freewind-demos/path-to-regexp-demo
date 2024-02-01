@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.13.1",
-    "path-to-regexp": "^1.5.3"
+    "lodash": "4.13.1",
+    "path-to-regexp": "1.5.3"
   }
 }
